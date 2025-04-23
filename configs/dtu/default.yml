@@ -1,0 +1,54 @@
+model:
+  name: dbw
+  mesh:
+    n_blocks: 10
+    S_world: 0.5
+    R_world: [115, 0, 0]
+    txt_size: 256
+  renderer:
+    faces_per_pixel: 10
+    cameras:
+      name: perspective
+    detach_bary: True
+    z_clip: 0.001
+  rend_optim:
+    coarse_learning: 3200
+    decimate_txt: 750
+    decimate_factor: 8
+    kill_blocks: True
+    opacity_noise: True
+  loss:
+    rgb_weight: 2
+    overlap_weight: 1
+    attn_weight: 1
+training:
+  batch_size: 8
+  colored_batch_size: 8
+  n_workers: 4
+  colored_n_workers: 4
+  optimizer:
+    name: adam
+    lr: 5.0e-4
+  scheduler:
+    name: multi_step
+    gamma: [0.5,0.5,0.1,0.1]
+    milestones: [500,1500,2500, 3200]
+  n_epoches: 3600
+  save_epoches: [2500, 3200]
+  train_stat_interval: 50
+  val_stat_interval: 100
+  visualizer_port: 8097
+Exp_setting:
+  Exp_setting:
+    if_bin_render: True
+    separate_blocks: True
+    attn_type: attn_fin
+    blk_loss_type: L2
+    warmup_iter: 2000
+    dis_ratio_thres: 0.65
+    num_ratio_thres: 0.1
+    blk_loss_thres: [0.003, 0.03]
+    combine_interval: 990
+    split_interval: 1000
+    stop_split: 1000
+    blk_backward_start: 0

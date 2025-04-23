@@ -1,0 +1,7 @@
+dataset:
+  name: dtu
+  tag: scan105
+  img_size: [1200,1600]
+
+training:
+  visualizer_port: 8097

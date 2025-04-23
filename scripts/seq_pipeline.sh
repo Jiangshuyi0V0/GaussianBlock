@@ -1,0 +1,1 @@
+cuda=0 tag=tag config=dtu/scan105.yml default=dtu/default.yml ./scripts/pipeline.sh
